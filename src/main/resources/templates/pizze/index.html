@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="UTF-8">
+	<title>Title test</title>
+</head>
+
+<body>
+
+	<h1>TEST</h1>
+	
+	<div th:each="pizza : ${pizze}">
+		<div th:text="${pizza.nome}"></div>
+		<div th:text="${pizza.descrizione}"></div>
+		<div th:text="${pizza.foto}"></div>
+	</div>
+	
+</body>
+
+</html>
