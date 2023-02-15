@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<link th:replace="~{fragments :: head}"></link>
+	<link th:replace="~{fragments :: script}"></link>
+	<title>Pagina specifica</title>
+</head>
+
+<body>
+
+<!-- 	<h1 th:text="${pizza.nome}"></h1> -->
+	
+	<table class="table table-striped table-dark table-bordered">
+	  <thead>
+	    <tr>
+	      <th scope="col">#</th>
+	      <th scope="col">Nome</th>
+	      <th scope="col">Descrizione</th>
+	      <th scope="col">Url foto</th>
+	      <th scope="col">Prezzo</th>
+	    </tr>
+	  </thead>
+	  <tbody>
+	    <tr>
+	      <th scope="row" th:text="${pizza.id}"></th>
+	      <td th:text="${pizza.nome}"></td>
+	      <td th:text="${pizza.descrizione}"></td>
+	      <td th:text="${pizza.foto}"></td>
+	      <td th:text="${pizza.prezzo}"></td>
+	    </tr>
+	  </tbody>
+	</table>
+	
+</body>
+
+</html>
