@@ -20,6 +20,7 @@ public class Pizza {
 	private String descrizione;
 	private String foto;
 	private double prezzo;
+	
 	public String getNome() {
 		return nome;
 	}

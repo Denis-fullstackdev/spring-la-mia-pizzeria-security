@@ -2,18 +2,19 @@
 <html xmlns:th="http://www.thymeleaf.org">
 
 <head>
-	<meta charset="UTF-8">
-	<title>Title test</title>
+	<link th:replace="~{fragments :: head}"></link>
+	<title>Lista Pizze</title>
 </head>
 
 <body>
 
-	<h1>TEST</h1>
+	<h1>LISTA PIZZE</h1>
 	
 	<div th:each="pizza : ${pizze}">
 		<div th:text="${pizza.nome}"></div>
 		<div th:text="${pizza.descrizione}"></div>
 		<div th:text="${pizza.foto}"></div>
+		<div th:text="${pizza.prezzo}"></div>
 	</div>
 	
 </body>
