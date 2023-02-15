@@ -3,6 +3,7 @@
 
 <head>
 	<link th:replace="~{fragments :: head}"></link>
+	<link th:replace="~{fragments :: script}"></link>
 	<title>Lista Pizze</title>
 </head>
 
@@ -10,12 +11,33 @@
 
 	<h1>LISTA PIZZE</h1>
 	
-	<div th:each="pizza : ${pizze}">
-		<div th:text="${pizza.nome}"></div>
-		<div th:text="${pizza.descrizione}"></div>
-		<div th:text="${pizza.foto}"></div>
-		<div th:text="${pizza.prezzo}"></div>
-	</div>
+<!-- 	<div th:each="pizza : ${pizze}"> -->
+<!-- 		<div th:text="${pizza.nome}"></div> -->
+<!-- 		<div th:text="${pizza.descrizione}"></div> -->
+<!-- 		<div th:text="${pizza.foto}"></div> -->
+<!-- 		<div th:text="${pizza.prezzo}"></div> -->
+<!-- 	</div> -->
+	
+	<table class="table table-dark">
+	  <thead>
+	    <tr>
+	      <th scope="col">#</th>
+	      <th scope="col">Nome</th>
+	      <th scope="col">Descrizione</th>
+	      <th scope="col">Url foto</th>
+	      <th scope="col">Prezzo</th>
+	    </tr>
+	  </thead>
+	  <tbody>
+	    <tr th:each="pizza : ${pizze}">
+	      <th scope="row" th:text="${pizza.nome}"></th>
+	      <td th:text="${pizza.nome}"></td>
+	      <td th:text="${pizza.descrizione}"></td>
+	      <td th:text="${pizza.foto}"></td>
+	      <td th:text="${pizza.prezzo}"></td>
+	    </tr>
+	  </tbody>
+	</table>
 	
 </body>
 
