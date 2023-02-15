@@ -18,7 +18,7 @@
 <!-- 		<div th:text="${pizza.prezzo}"></div> -->
 <!-- 	</div> -->
 	
-	<table class="table table-dark">
+	<table class="table table-striped table-dark table-bordered">
 	  <thead>
 	    <tr>
 	      <th scope="col">#</th>
@@ -30,7 +30,7 @@
 	  </thead>
 	  <tbody>
 	    <tr th:each="pizza : ${pizze}">
-	      <th scope="row" th:text="${pizza.nome}"></th>
+	      <th scope="row" th:text="${pizza.id}"></th>
 	      <td th:text="${pizza.nome}"></td>
 	      <td th:text="${pizza.descrizione}"></td>
 	      <td th:text="${pizza.foto}"></td>
