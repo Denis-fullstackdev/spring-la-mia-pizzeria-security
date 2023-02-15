@@ -34,7 +34,7 @@ public class PizzaController {
 	
 	@GetMapping("/{id}")
 	public String show(@PathVariable("id") Integer id, Model model) {
-		model.addAttribute("pizze", repository.getReferenceById(id));
+		model.addAttribute("pizza", repository.getReferenceById(id));
 		return "/pizze/show";
 	}
 	
