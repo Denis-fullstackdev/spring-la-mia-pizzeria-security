@@ -11,18 +11,18 @@
 
 	<h1>LISTA PIZZE</h1>
 	
-<!-- 	<div th:each="pizza : ${pizze}"> -->
-<!-- 		<div th:text="${pizza.nome}"></div> -->
-<!-- 		<div th:text="${pizza.descrizione}"></div> -->
-<!-- 		<div th:text="${pizza.foto}"></div> -->
-<!-- 		<div th:text="${pizza.prezzo}"></div> -->
-<!-- 	</div> -->
+	<form action="/pizze">
+		<label>Filtra pizze: </label>
+		<input type="text" name="keyword">
+		<input type="submit">
+	</form>
 	
+	<h3><a th:href="@{'pizze/create'}">Crea nuova pizza</a></h3>
 	
 	<h2 th:if="${pizze.size()==0}">
 		Non ci sono pizze salvate!
 	</h2>
-	<table class="table table-striped table-dark table-bordered" th:unless="${pizze.size()==0}">
+	<table class="table table-striped table-bordered" th:unless="${pizze.size()==0}">
 	  <thead>
 	    <tr>
 	      <th scope="col">#</th>
@@ -35,7 +35,7 @@
 	  <tbody>
 	    <tr th:each="pizza : ${pizze}">
 	      <th scope="row" th:text="${pizza.id}"></th>
-	      <td th:text="${pizza.nome}"></td>
+	      <td><a th:href="@{'pizze/'+${pizza.id}}" th:text="${pizza.nome}"></a></td>
 	      <td th:text="${pizza.descrizione}"></td>
 	      <td th:text="${pizza.foto}"></td>
 	      <td th:text="${pizza.prezzo}"></td>
