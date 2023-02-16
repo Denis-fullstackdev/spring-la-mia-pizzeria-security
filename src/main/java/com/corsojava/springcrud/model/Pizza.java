@@ -6,6 +6,10 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
 
 
 @Entity
@@ -16,7 +20,14 @@ public class Pizza {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Integer id;
 	
+	@NotNull(message="Inserire nome - Campo obbligatorio")
+	@NotEmpty(message="Inserire nome - Campo obbligatorio")
+	@NotBlank(message="Inserire nome - Campo obbligatorio")
+	@Size(min=5, max=40, message="Il nome deve essere di minimo :min caratteri e massimo :max")
 	private String nome;
+	
+	@NotNull(message="Inserire descrizione - Campo obbligatorio")
+	@NotEmpty(message="Inserire descrizione - Campo obbligatorio")
 	private String descrizione;
 	private String foto;
 	private double prezzo;
@@ -47,15 +58,6 @@ public class Pizza {
 	}
 	public Integer getId() {
 		return id;
-	}
-	
-//	public Pizza () {
-//		nome = "pizza margherita";
-//		descrizione = "descrizione pomodoro mozzarella";
-//		foto = "foto";
-//		prezzo = 3.14D;
-//	}
-	
-	
+	}	
 
 }
