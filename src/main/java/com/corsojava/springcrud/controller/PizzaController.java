@@ -43,35 +43,35 @@ public class PizzaController {
 		return "pizze/show";
 	}
 	
-	@GetMapping("/create")		// PER GESTIRE LE RICHIESTE "GET" DI /pizze/new
+	@GetMapping("/insert")		// PER GESTIRE LE RICHIESTE "GET" DI /pizze/new
 	public String create(Model model) {
 		Pizza pizza = new Pizza();
 		model.addAttribute("pizza", pizza);
-		return "pizze/create";
+		return "pizze/insert";
 	}
 	
-	@PostMapping("/create")	// PER GESTIRE LE RICHIESTE "POST" DI /pizze/new
+	@PostMapping("/insert")	// PER GESTIRE LE RICHIESTE "POST" DI /pizze/new
 	public String store(@Valid @ModelAttribute("pizza") Pizza formPizza, BindingResult bindingResult, Model model) {
 		
 		if(bindingResult.hasErrors())
-			return "/pizze/create";
+			return "/pizze/insert";
 		
 		repository.save(formPizza);
 		return "redirect:/pizze";
 	}
 	
-	@GetMapping("/edit/{id}") // PER GESTIRE LE RICHIESTE "GET" DI /pizze/edit/id
+	@GetMapping("/insert/{id}") // PER GESTIRE LE RICHIESTE "GET" DI /pizze/edit/id
 	public String edit(@PathVariable("id") Integer id, Model model) {
 		Pizza pizza = repository.getReferenceById(id);
 		model.addAttribute("pizza", pizza);
-		return "pizze/edit";
+		return "pizze/insert";
 	}
 
-	@PostMapping("/edit/{id}")	// PER GESTIRE LE RICHIESTE "POST" DI /pizze/edit/id
+	@PostMapping("/insert/{id}")	// PER GESTIRE LE RICHIESTE "POST" DI /pizze/edit/id
 	public String update(@Valid @ModelAttribute("pizza") Pizza formPizza, BindingResult bindingResult, Model model) {
 		
 		if(bindingResult.hasErrors())
-			return "/pizze/edit";
+			return "/pizze/insert";
 		
 		repository.save(formPizza);
 		return "redirect:/pizze";

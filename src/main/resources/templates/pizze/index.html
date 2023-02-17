@@ -17,7 +17,7 @@
 		<input type="submit">
 	</form>
 	
-	<h3><a th:href="@{'pizze/create'}">Crea nuova pizza</a></h3>
+	<h3><a th:href="@{'pizze/insert'}">Crea nuova pizza</a></h3>
 	
 	<h2 th:if="${pizze.size()==0}">
 		Non ci sono pizze salvate!
@@ -42,7 +42,7 @@
 	      <td th:text="${pizza.foto}"></td>
 	      <td th:text="${pizza.prezzo}"></td>
 	      <td>
-	      	<a th:href="@{'/pizze/edit/' + ${pizza.id} }">Edit</a>
+	      	<a th:href="@{'/pizze/insert/' + ${pizza.id} }">Edit</a>
 	      </td>
 	      <td>
 	      	<form action="#" th:action="@{'/pizze/delete/' + ${pizza.id} }" method="post">
