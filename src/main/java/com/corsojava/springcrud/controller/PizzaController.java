@@ -50,15 +50,15 @@ public class PizzaController {
 		return "pizze/insert";
 	}
 	
-	@PostMapping("/insert")	// PER GESTIRE LE RICHIESTE "POST" DI /pizze/new
-	public String store(@Valid @ModelAttribute("pizza") Pizza formPizza, BindingResult bindingResult, Model model) {
-		
-		if(bindingResult.hasErrors())
-			return "/pizze/insert";
-		
-		repository.save(formPizza);
-		return "redirect:/pizze";
-	}
+//	@PostMapping("/insert")	// PER GESTIRE LE RICHIESTE "POST" DI /pizze/new
+//	public String store(@Valid @ModelAttribute("pizza") Pizza formPizza, BindingResult bindingResult, Model model) {
+//		
+//		if(bindingResult.hasErrors())
+//			return "/pizze/insert";
+//		
+//		repository.save(formPizza);
+//		return "redirect:/pizze";
+//	}
 	
 	@GetMapping("/insert/{id}") // PER GESTIRE LE RICHIESTE "GET" DI /pizze/edit/id
 	public String edit(@PathVariable("id") Integer id, Model model) {
@@ -76,11 +76,11 @@ public class PizzaController {
 		repository.save(formPizza);
 		return "redirect:/pizze";
 	}
-	
+
 	@PostMapping("/delete/{id}")
 	public String delete(@PathVariable("id") Integer id) {
 		repository.deleteById(id);
 		return "redirect:/pizze";
 	}
-	
+
 }
