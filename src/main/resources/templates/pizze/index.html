@@ -30,6 +30,7 @@
 	      <th scope="col">Descrizione</th>
 	      <th scope="col">Url foto</th>
 	      <th scope="col">Prezzo</th>
+	      <th scope="col">ELIMINA</th>
 	    </tr>
 	  </thead>
 	  <tbody>
@@ -39,6 +40,13 @@
 	      <td th:text="${pizza.descrizione}"></td>
 	      <td th:text="${pizza.foto}"></td>
 	      <td th:text="${pizza.prezzo}"></td>
+	      <td>
+	      	<form action="#" th:action="@{'/pizze/delete/' + ${pizza.id} }" method="post">
+				<button class="btn btn-danger" type="submit" id="submitButton">
+					X
+				</button>
+			</form>
+	      </td>
 	    </tr>
 	  </tbody>
 	</table>
