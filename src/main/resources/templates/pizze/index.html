@@ -30,6 +30,7 @@
 	      <th scope="col">Descrizione</th>
 	      <th scope="col">Url foto</th>
 	      <th scope="col">Prezzo</th>
+	      <th scope="col">MODIFICA</th>
 	      <th scope="col">ELIMINA</th>
 	    </tr>
 	  </thead>
@@ -40,6 +41,9 @@
 	      <td th:text="${pizza.descrizione}"></td>
 	      <td th:text="${pizza.foto}"></td>
 	      <td th:text="${pizza.prezzo}"></td>
+	      <td>
+	      	<a th:href="@{'/pizze/edit/' + ${pizza.id} }">Edit</a>
+	      </td>
 	      <td>
 	      	<form action="#" th:action="@{'/pizze/delete/' + ${pizza.id} }" method="post">
 				<button class="btn btn-danger" type="submit" id="submitButton">
