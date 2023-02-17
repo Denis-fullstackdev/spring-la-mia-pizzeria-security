@@ -11,7 +11,7 @@
 	
 	<div class="container">
 		<h1>Modifica pizza</h1>
-		<form id="pizza-form" th:object="${pizza}" th:action="@{${pizza.id}}" method="post">
+		<form id="pizza-form" th:object="${pizza}" th:action="@{'/pizze/edit/' + ${pizza.id} }" method="post">
 			<div class="row">
 				<div class="col">
 					<ul>
