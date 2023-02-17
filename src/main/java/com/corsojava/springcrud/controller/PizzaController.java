@@ -60,4 +60,27 @@ public class PizzaController {
 		return "redirect:/pizze";
 	}
 	
+	@GetMapping("/edit/{id}") // PER GESTIRE LE RICHIESTE "GET" DI /pizze/edit/id
+	public String edit(@PathVariable("id") Integer id, Model model) {
+		Pizza pizza = repository.getReferenceById(id);
+		model.addAttribute("pizza", pizza);
+		return "pizze/edit";
+	}
+
+	@PostMapping("/edit/{id}")	// PER GESTIRE LE RICHIESTE "POST" DI /pizze/edit/id
+	public String update(@Valid @ModelAttribute("pizza") Pizza formPizza, BindingResult bindingResult, Model model) {
+		
+		if(bindingResult.hasErrors())
+			return "/pizze/edit";
+		
+		repository.save(formPizza);
+		return "redirect:/pizze";
+	}
+	
+	@PostMapping("/delete/{id}")
+	public String delete(@PathVariable("id") Integer id) {
+		repository.deleteById(id);
+		return "redirect:/pizze";
+	}
+	
 }
