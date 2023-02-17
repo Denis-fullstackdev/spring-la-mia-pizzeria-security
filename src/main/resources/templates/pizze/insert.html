@@ -4,13 +4,16 @@
 <head>
 	<link th:replace="~{fragments :: head}"></link>
 	<link th:replace="~{fragments :: script}"></link>
-	<title>Nuova pizza</title>
+	<title th:if="${pizza.id} == null">New Pizza</title>
+	<title th:if="${pizza.id} != null">Edit Pizza</title>
 </head>
 
 <body>
-	
 	<div class="container">
-		<h1>Inserisci nuova pizza</h1>
+	
+		<h1 th:if="${pizza.id} == null">Inserisci nuova pizza</h1>
+		<h1 th:if="${pizza.id} != null">Modifica pizza</h1>
+
 		<form id="pizza-form" th:object="${pizza}" th:action="@{'/pizze/insert/' + ${pizza.id} }" method="post">
 			<ul>
 				<li class="text-danger" th:each="err : ${#fields.allErrors()}" th:text="${err}"></li>

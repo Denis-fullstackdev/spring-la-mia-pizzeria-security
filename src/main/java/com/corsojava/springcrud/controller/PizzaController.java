@@ -49,17 +49,7 @@ public class PizzaController {
 		model.addAttribute("pizza", pizza);
 		return "pizze/insert";
 	}
-	
-//	@PostMapping("/insert")	// PER GESTIRE LE RICHIESTE "POST" DI /pizze/new
-//	public String store(@Valid @ModelAttribute("pizza") Pizza formPizza, BindingResult bindingResult, Model model) {
-//		
-//		if(bindingResult.hasErrors())
-//			return "/pizze/insert";
-//		
-//		repository.save(formPizza);
-//		return "redirect:/pizze";
-//	}
-	
+
 	@GetMapping("/insert/{id}") // PER GESTIRE LE RICHIESTE "GET" DI /pizze/edit/id
 	public String edit(@PathVariable("id") Integer id, Model model) {
 		Pizza pizza = repository.getReferenceById(id);
@@ -67,7 +57,7 @@ public class PizzaController {
 		return "pizze/insert";
 	}
 
-	@PostMapping("/insert/{id}")	// PER GESTIRE LE RICHIESTE "POST" DI /pizze/edit/id
+	@PostMapping("/insert/{id}")	// PER GESTIRE LE RICHIESTE "POST" DI /pizze/insert/
 	public String update(@Valid @ModelAttribute("pizza") Pizza formPizza, BindingResult bindingResult, Model model) {
 		
 		if(bindingResult.hasErrors())
