@@ -25,7 +25,7 @@ public class Pizza {
 	
 	@NotNull(message="Inserire nome - Campo obbligatorio")
 	@NotEmpty(message="Inserire nome - Campo obbligatorio")
-	@Size(min=5, max=40, message="Il nome deve essere di minimo :min caratteri e massimo :max")
+	@Size(min=5, max=40, message="Il nome deve essere di minimo 5 caratteri e massimo 40 caratteri")
 	private String nome;
 	
 	@NotNull(message="Inserire descrizione - Campo obbligatorio")
@@ -35,7 +35,7 @@ public class Pizza {
 	private String foto;
 	
 	@NotNull(message="Inserire prezzo - Campo obbligatorio")
-	@DecimalMin(value="0.0", message="Prezzo non può essere negativo")
+	@DecimalMin(value="0.1", message="Prezzo non può essere negativo o zero")
 	private BigDecimal prezzo;
 	
 	public String getNome() {
