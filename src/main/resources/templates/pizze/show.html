@@ -18,6 +18,7 @@
 	      <th scope="col">Descrizione</th>
 	      <th scope="col">Foto</th>
 	      <th scope="col">Prezzo</th>
+	      <th scope="col">Offerte</th>
 	    </tr>
 	  </thead>
 	  <tbody>
@@ -29,9 +30,20 @@
 	      	<img th:src="${pizza.foto}" th:alt="${pizza.nome}">
 	      </td>
 	      <td th:text="${pizza.prezzo}"></td>
+	      <td>
+	      	<div th:if="${pizza.offerte.size()==0}">Non ci sono offerte attive per questa pizza</div>
+	      	<div th:if="${pizza.offerte.size()>0}">
+	      		<h3 th:text="|Offerta n. ${offerta.id}|"></h3>
+	      		<div th:text="${offerta.titolo}"></div>
+	      		<div th:text="${offerta.inizioOfferta}"></div>
+	      		<div th:text="${offerta.fineOfferta}"></div>
+	      	</div>
+	      </td>
 	    </tr>
 	  </tbody>
 	</table>
+	
+	<a th:href="@{ '/offerte/insert?pizzaId=' + ${pizza.id} }">Inserisci offerta</a>
 	
 	<form action="#" th:action="@{'/pizze/delete/' + ${pizza.id} }" method="post">
 		<button class="btn btn-danger" type="submit" id="submitButton">

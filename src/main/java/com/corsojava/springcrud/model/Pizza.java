@@ -2,14 +2,15 @@ package com.corsojava.springcrud.model;
 
 
 import java.math.BigDecimal;
+import java.util.List;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.DecimalMin;
-import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
@@ -37,6 +38,15 @@ public class Pizza {
 	@NotNull(message="Inserire prezzo - Campo obbligatorio")
 	@DecimalMin(value="0.1", message="Prezzo non può essere negativo o zero")
 	private BigDecimal prezzo;
+	
+	public List<Offerta> getOfferte() {
+		return offerte;
+	}
+	public void setOfferte(List<Offerta> offerte) {
+		this.offerte = offerte;
+	}
+	@OneToMany(mappedBy = "pizza")
+	private List<Offerta> offerte;
 	
 	public String getNome() {
 		return nome;
