@@ -17,7 +17,7 @@
 	      <th scope="col">#</th>
 	      <th scope="col">Nome</th>
 	      <th scope="col">Descrizione</th>
-	      <th scope="col">Url foto</th>
+	      <th scope="col">Foto</th>
 	      <th scope="col">Prezzo</th>
 	    </tr>
 	  </thead>
@@ -26,7 +26,9 @@
 	      <th scope="row" th:text="${pizza.id}"></th>
 	      <td th:text="${pizza.nome}"></td>
 	      <td th:text="${pizza.descrizione}"></td>
-	      <td th:text="${pizza.foto}"></td>
+	      <td>
+	      	<img th:src="${pizza.foto}" th:alt="${pizza.nome}">
+	      </td>
 	      <td th:text="${pizza.prezzo}"></td>
 	    </tr>
 	  </tbody>
@@ -41,5 +43,9 @@
 	<a th:href="@{'/pizze'}">Torna alla lista</a>
 	
 </body>
+
+<style>
+	img{height:200px; width:200px;}
+</style>
 
 </html>
