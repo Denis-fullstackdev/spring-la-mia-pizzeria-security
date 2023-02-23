@@ -13,7 +13,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.corsojava.springcrud.model.Ingrediente;
 import com.corsojava.springcrud.model.Pizza;
+import com.corsojava.springcrud.repository.IngredienteRepository;
 import com.corsojava.springcrud.repository.PizzaRepository;
 
 import jakarta.validation.Valid;
@@ -24,6 +26,9 @@ public class PizzaController {
 	
 	@Autowired
 	private PizzaRepository repository;
+	
+	@Autowired
+	private IngredienteRepository ingredienteRepository;
 	
 	@GetMapping
 	public String index(@RequestParam(name="keyword", required=false) String keyword, Model model) {
@@ -46,14 +51,22 @@ public class PizzaController {
 	@GetMapping("/insert")		// PER GESTIRE LE RICHIESTE "GET" DI /pizze/new
 	public String create(Model model) {
 		Pizza pizza = new Pizza();
+		
+		List<Ingrediente> listaIngredienti = ingredienteRepository.findAll();
+		
 		model.addAttribute("pizza", pizza);
+		model.addAttribute("listaIngredienti", listaIngredienti);
 		return "pizze/insert";
 	}
 
 	@GetMapping("/insert/{id}") // PER GESTIRE LE RICHIESTE "GET" DI /pizze/edit/id
 	public String edit(@PathVariable("id") Integer id, Model model) {
 		Pizza pizza = repository.getReferenceById(id);
+		
+		List<Ingrediente> listaIngredienti = ingredienteRepository.findAll();
+		
 		model.addAttribute("pizza", pizza);
+		model.addAttribute("listaIngredienti", listaIngredienti);
 		return "pizze/insert";
 	}
 

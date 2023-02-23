@@ -4,10 +4,12 @@ package com.corsojava.springcrud.model;
 import java.math.BigDecimal;
 import java.util.List;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.ManyToMany;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.DecimalMin;
@@ -41,6 +43,9 @@ public class Pizza {
 	
 	@OneToMany(mappedBy = "pizza")
 	private List<Offerta> offerte;
+	
+	@ManyToMany(cascade = CascadeType.ALL)
+	private List<Ingrediente> ingredienti;
 	
 	public List<Offerta> getOfferte() {
 		return offerte;
@@ -78,6 +83,13 @@ public class Pizza {
 	}
 	public void setId(Integer id) {
 		this.id = id;
+	}
+	
+	public List<Ingrediente> getIngredienti() {
+		return ingredienti;
+	}
+	public void setIngredienti(List<Ingrediente> ingredienti) {
+		this.ingredienti = ingredienti;
 	}
 
 }

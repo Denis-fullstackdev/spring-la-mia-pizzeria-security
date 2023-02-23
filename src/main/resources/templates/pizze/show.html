@@ -33,8 +33,8 @@
 	      <td>
 	      	<div th:if="${pizza.offerte.size()==0}">Non ci sono offerte attive per questa pizza</div>
 	      	<div th:if="${pizza.offerte.size()>0}">
-	      		<div th:each="offerta : ${pizza.offerte}">
-		      		<h3 th:text="${offerta.id}"></h3>
+	      		<div th:each="offerta : ${pizza.offerte}" class="border m-1">
+		      		<div th:text="${offerta.id}"></div>
 		      		<div th:text="${offerta.titolo}"></div>
 		      		<div th:text="${offerta.inizioOfferta}"></div>
 		      		<div th:text="${offerta.fineOfferta}"></div>
