@@ -3,7 +3,7 @@
 
 <head>
 	<link th:replace="~{fragments :: head}"></link>
-	<title>Pagina specifica</title>
+	<title>Pagina dettaglio Pizza</title>
 </head>
 
 <body>
@@ -33,17 +33,19 @@
 	      <td>
 	      	<div th:if="${pizza.offerte.size()==0}">Non ci sono offerte attive per questa pizza</div>
 	      	<div th:if="${pizza.offerte.size()>0}">
-	      		<h3 th:text="|Offerta n. ${offerta.id}|"></h3>
-	      		<div th:text="${offerta.titolo}"></div>
-	      		<div th:text="${offerta.inizioOfferta}"></div>
-	      		<div th:text="${offerta.fineOfferta}"></div>
+	      		<div th:each="offerta : ${pizza.offerte}">
+		      		<h3 th:text="${offerta.id}"></h3>
+		      		<div th:text="${offerta.titolo}"></div>
+		      		<div th:text="${offerta.inizioOfferta}"></div>
+		      		<div th:text="${offerta.fineOfferta}"></div>
+	      		</div>
 	      	</div>
 	      </td>
 	    </tr>
 	  </tbody>
 	</table>
 	
-	<a th:href="@{ '/offerte/insert?pizzaId=' + ${pizza.id} }">Inserisci offerta</a>
+	<a th:href="@{ '/offerte/create?pizzaId=' + ${pizza.id} }">Inserisci offerta</a>
 	
 	<form action="#" th:action="@{'/pizze/delete/' + ${pizza.id} }" method="post">
 		<button class="btn btn-danger" type="submit" id="submitButton">

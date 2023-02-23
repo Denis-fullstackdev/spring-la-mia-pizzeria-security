@@ -26,7 +26,7 @@ public class PizzaController {
 	private PizzaRepository repository;
 	
 	@GetMapping
-	public String menuController(@RequestParam(name="keyword", required=false) String keyword, Model model) {
+	public String index(@RequestParam(name="keyword", required=false) String keyword, Model model) {
 		List<Pizza> filtro;
 		
 		if ( keyword != null && !keyword.isEmpty() )

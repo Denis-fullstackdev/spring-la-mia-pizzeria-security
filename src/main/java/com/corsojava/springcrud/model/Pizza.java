@@ -39,14 +39,15 @@ public class Pizza {
 	@DecimalMin(value="0.1", message="Prezzo non può essere negativo o zero")
 	private BigDecimal prezzo;
 	
+	@OneToMany(mappedBy = "pizza")
+	private List<Offerta> offerte;
+	
 	public List<Offerta> getOfferte() {
 		return offerte;
 	}
 	public void setOfferte(List<Offerta> offerte) {
 		this.offerte = offerte;
 	}
-	@OneToMany(mappedBy = "pizza")
-	private List<Offerta> offerte;
 	
 	public String getNome() {
 		return nome;

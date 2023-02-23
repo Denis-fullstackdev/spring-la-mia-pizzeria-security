@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<link th:replace="~{fragments :: head}"></link>
+	<title>New Offerta</title>
+</head>
+
+<body>
+
+	<div class="container">
+	
+		<h1>Inserisci nuova offerta</h1>
+
+		<form id="offerta-form" th:object="${offerta}" th:action="@{/offerte/create}" method="post">
+		
+			<input type="hidden" th:field="${offerta.pizza}">
+			
+			<label for="titolo">Titolo</label>
+			<input type="text" id="titolo" th:field="*{titolo}">
+			
+			<label for="inizioOfferta">Inizio offerta</label>
+			<input type="date" id="inizioOfferta" th:field="*{inizioOfferta}">
+			
+			<label for="fineOfferta">Fine Offerta</label>
+			<input type="date" id="fineOfferta" th:field="*{fineOfferta}">
+			
+			<input type="submit">
+		</form>
+	</div>	
+	
+</body>
+
+</html>

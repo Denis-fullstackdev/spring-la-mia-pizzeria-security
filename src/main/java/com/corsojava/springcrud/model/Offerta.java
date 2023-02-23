@@ -3,43 +3,35 @@ package com.corsojava.springcrud.model;
 import java.time.LocalDate;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
-import jakarta.validation.constraints.NotEmpty;
-import jakarta.validation.constraints.NotNull;
-import jakarta.validation.constraints.Size;
 
 @Entity
-@Table
+@Table(name = "offerte")
 public class Offerta {
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	private Long id;
+	private Integer id;
 	
-	@NotNull(message="Inserire titolo - Campo obbligatorio")
-	@NotEmpty(message="Inserire titolo - Campo obbligatorio")
-	@Size(min=10, max=50, message="Il titolo deve essere di minimo 10 caratteri e massimo 50 caratteri")
 	private String titolo;
 	
-	@NotNull(message="Inserire data Inizio offerta - Campo obbligatorio")
 	private LocalDate inizioOfferta;
 	
-	@NotNull(message="Inserire data Fine offerta - Campo obbligatorio")
 	private LocalDate fineOfferta;
 	
-	@NotNull
-	@ManyToOne
+	@ManyToOne(fetch = FetchType.LAZY, optional = false)
 	private Pizza pizza;
 
-	public Long getId() {
+	public Integer getId() {
 		return id;
 	}
 
-	public void setId(Long id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 
