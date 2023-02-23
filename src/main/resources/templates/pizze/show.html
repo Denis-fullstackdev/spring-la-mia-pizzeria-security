@@ -19,6 +19,7 @@
 	      <th scope="col">Foto</th>
 	      <th scope="col">Prezzo</th>
 	      <th scope="col">Offerte</th>
+	      <th scope="col">Ingredienti</th>
 	    </tr>
 	  </thead>
 	  <tbody>
@@ -41,11 +42,22 @@
 	      		</div>
 	      	</div>
 	      </td>
+	      <td>
+	      	<div th:if="${pizza.ingredienti.size()==0}">Non ci sono ingredienti</div>
+	      	<div th:if="${pizza.ingredienti.size()>0}">
+	      		<div th:each="ingrediente : ${pizza.ingredienti}" class="border m-1">
+		      		<div th:text="${ingrediente.id}"></div>
+		      		<div th:text="${ingrediente.nome}"></div>
+	      		</div>
+	      	</div>
+	      </td>
 	    </tr>
 	  </tbody>
 	</table>
 	
 	<a th:href="@{ '/offerte/create?pizzaId=' + ${pizza.id} }">Inserisci offerta</a>
+	
+	<a th:href="@{ '/ingredienti/create?pizzaId=' + ${pizza.id} }">Inserisci ingrediente</a>
 	
 	<form action="#" th:action="@{'/pizze/delete/' + ${pizza.id} }" method="post">
 		<button class="btn btn-danger" type="submit" id="submitButton">

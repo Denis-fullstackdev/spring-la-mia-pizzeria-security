@@ -18,7 +18,7 @@ import com.corsojava.springcrud.repository.IngredienteRepository;
 @RequestMapping("/ingredienti")
 public class IngredienteController {
 	@Autowired
-	private IngredienteRepository ingredienteRepository;
+	IngredienteRepository ingredienteRepository;
 	
 	@GetMapping()
 	public String index(Model model) {
@@ -32,7 +32,7 @@ public class IngredienteController {
 		Ingrediente ingrediente=new Ingrediente();
 		
 		model.addAttribute("ingrediente", ingrediente);
-	
+
 		return "/ingredienti/create";
 	}
 	

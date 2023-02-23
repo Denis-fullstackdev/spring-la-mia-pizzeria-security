@@ -3,6 +3,7 @@ package com.corsojava.springcrud.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -52,7 +53,7 @@ public class PizzaController {
 	public String create(Model model) {
 		Pizza pizza = new Pizza();
 		
-		List<Ingrediente> listaIngredienti = ingredienteRepository.findAll();
+		List<Ingrediente> listaIngredienti = ingredienteRepository.findAll(Sort.by("nome"));
 		
 		model.addAttribute("pizza", pizza);
 		model.addAttribute("listaIngredienti", listaIngredienti);
@@ -63,7 +64,7 @@ public class PizzaController {
 	public String edit(@PathVariable("id") Integer id, Model model) {
 		Pizza pizza = repository.getReferenceById(id);
 		
-		List<Ingrediente> listaIngredienti = ingredienteRepository.findAll();
+		List<Ingrediente> listaIngredienti = ingredienteRepository.findAll(Sort.by("nome"));
 		
 		model.addAttribute("pizza", pizza);
 		model.addAttribute("listaIngredienti", listaIngredienti);

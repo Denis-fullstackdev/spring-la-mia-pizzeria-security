@@ -9,6 +9,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinTable;
 import jakarta.persistence.ManyToMany;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
@@ -41,10 +42,10 @@ public class Pizza {
 	@DecimalMin(value="0.1", message="Prezzo non può essere negativo o zero")
 	private BigDecimal prezzo;
 	
-	@OneToMany(mappedBy = "pizza")
+	@OneToMany(mappedBy = "pizza", cascade = CascadeType.ALL)
 	private List<Offerta> offerte;
 	
-	@ManyToMany(cascade = CascadeType.ALL)
+	@ManyToMany()
 	private List<Ingrediente> ingredienti;
 	
 	public List<Offerta> getOfferte() {

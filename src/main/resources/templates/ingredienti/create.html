@@ -9,11 +9,14 @@
 <body>
 
 	<form id="ingrediente-form" th:object="${ingrediente}" th:action="@{/ingredienti/create}" method="post">
-			
-			<label for="nome">Nome</label>
-			<input type="text" id="nome" th:field="*{nome}">
-			
-			<input type="submit">
+	
+<!-- 		<input type="hidden" th:field="${ingrediente.pizza}"> -->
+		
+		<label for="nome">Nome</label>
+		<input type="text" id="nome" th:field="*{nome}">
+
+		<a class="btn btn-primary" th:href="@{/pizze}">Torna alla lista pizze</a>
+		<input type="submit">
 	</form>
 	
 </body>
