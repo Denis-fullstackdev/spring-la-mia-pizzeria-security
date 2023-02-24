@@ -3,20 +3,21 @@
 
 <head>
 	<link th:replace="~{fragments :: head}"></link>
-	<title>New Offerta</title>
+	<title>Modifica Offerta</title>
 </head>
 
 <body>
 
 	<div class="container">
 	
-		<div th:replace="~{fragments :: navbar('createOfferta')}"></div>
+		<div th:replace="~{fragments :: navbar('editOfferta')}"></div>
 	
-		<h1>Inserisci nuova offerta</h1>
+		<h1>Modifica offerta</h1>
 
-		<form id="offerta-form" th:object="${offerta}" th:action="@{/offerte/create}" method="post">
+		<form id="offerta-form" th:object="${offerta}" th:action="@{|/offerte/edit/${offerta.id}|}" method="post">
 		
 			<input type="hidden" th:field="${offerta.pizza}">
+			<input type="number" id="id" th:field="*{id}" class="d-none">
 			
 			<label for="titolo">Titolo</label>
 			<input type="text" id="titolo" th:field="*{titolo}">

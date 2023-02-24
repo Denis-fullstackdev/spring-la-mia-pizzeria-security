@@ -3,30 +3,38 @@
 
 <head>
 	<link th:replace="~{fragments :: head}"></link>
-	<title>Lista ingredienti</title>
+	<title>Lista Ingredienti</title>
 </head>
 
 <body>
+	<div class="container">
 
-	<h1>TEST</h1>
+		<div th:replace="~{fragments :: navbar('ingredienti')}"></div>
 	
-	<a th:href="@{/ingredienti/create}">Crea nuovo ingrediente</a>
-	
-	<table class="table table-striped table-bordered">
-	  <thead>
-	    <tr>
-	      <th scope="col">#</th>
-	      <th scope="col">Nome</th>
-	    </tr>
-	  </thead>
-	  <tbody>
-	    <tr th:each="ingrediente : ${elencoIngredienti}">
-	      <th scope="row" th:text="${ingrediente.id}"></th>
-	      <td><a th:href="@{'ingredienti/'+${ingrediente.id}}" th:text="${ingrediente.nome}"></a></td>
-	    </tr>
-	  </tbody>
-	</table>
-	
+		<h1>Lista Ingredienti</h1>
+		
+		<a th:href="@{/ingredienti/create}">Inserisci nuovo ingrediente</a>
+		
+		<table class="table table-striped table-bordered">
+		  <thead>
+		    <tr>
+		      <th scope="col">#</th>
+		      <th scope="col">Nome</th>
+		      <th scope="col">MODIFICA</th>
+		    </tr>
+		  </thead>
+		  <tbody>
+		    <tr th:each="ingrediente : ${elencoIngredienti}">
+		      <th scope="row" th:text="${ingrediente.id}"></th>
+		      <td><a th:href="@{'ingredienti/'+${ingrediente.id}}" th:text="${ingrediente.nome}"></a></td>
+		      <td>
+		      	<a th:href="@{'/ingredienti/edit/' + ${ingrediente.id} }">EDIT</a>
+		      </td>
+<!-- 		      <td><a th:href="@{'ingredienti/delete/'+${ingrediente.id}}">CANCELLA</a></td> -->
+		    </tr>
+		  </tbody>
+		</table>
+	</div>
 </body>
 
 </html>

@@ -3,29 +3,30 @@
 
 <head>
 	<link th:replace="~{fragments :: head}"></link>
-	<title>Inserisci Ingrediente</title>
+	<title>Modifica Ingrediente</title>
 </head>
 
 <body>
 
 	<div class="container">
 
-		<div th:replace="~{fragments :: navbar('createIngrediente')}"></div>
+		<div th:replace="~{fragments :: navbar('editIngrediente')}"></div>
 		
-		<h2>Inserisci Ingrediente</h2>
+		<h2>Modifica Ingrediente</h2>
 
-		<form id="ingrediente-form" th:object="${ingrediente}" th:action="@{/ingredienti/create}" method="post">
+		<form id="ingrediente-form" th:object="${ingrediente}" th:action="@{|/ingredienti/edit/${ingrediente.id}|}" method="post">
 		
 <!-- 		<input type="hidden" th:field="${ingrediente.pizza}"> -->
+			<input type="number" id="id" th:field="*{id}" class="d-none">
 			
 			<label for="nome">Nome</label>
 			<input type="text" id="nome" th:field="*{nome}">
 	
-			<input type="submit">
-			
+			<input type="submit">		
 		</form>
 		
 		<a th:href="@{/pizze}">Torna alla lista pizze</a>
+		
 	</div>
 </body>
 
