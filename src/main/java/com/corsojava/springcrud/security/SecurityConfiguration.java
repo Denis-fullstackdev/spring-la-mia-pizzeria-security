@@ -15,7 +15,7 @@ public class SecurityConfiguration {
 	@Bean
 	SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
 		http.authorizeHttpRequests()
-			.requestMatchers("/pizze/insert").hasAuthority("ADMIN")
+			.requestMatchers("/pizze/insert", "/pizze/insert/**").hasAuthority("ADMIN")
 			.requestMatchers(HttpMethod.POST, "/pizze/**").hasAuthority("ADMIN")
 			.requestMatchers("/ingredienti", "/ingredienti/**").hasAuthority("ADMIN")
 			.requestMatchers("/pizze", "/pizze/**").hasAnyAuthority("USER", "ADMIN")
@@ -43,6 +43,10 @@ public class SecurityConfiguration {
 		DaoAuthenticationProvider authProvider = new DaoAuthenticationProvider();	
 		authProvider.setUserDetailsService(userDetailsService());
 		authProvider.setPasswordEncoder(passwordEncoder());
+		
+//		System.out.println("USER: "+passwordEncoder().encode("user"));
+//	    System.out.println("ADMIN: "+passwordEncoder().encode("admin"));
+		
 		return authProvider;
 	}
 

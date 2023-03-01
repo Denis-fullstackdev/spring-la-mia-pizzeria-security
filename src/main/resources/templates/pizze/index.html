@@ -19,7 +19,7 @@
 			<input type="submit">
 		</form>
 		
-		<h3><a th:href="@{'pizze/insert'}">Crea nuova pizza</a></h3>
+		<h3><a th:href="@{'pizze/insert'}" sec:authorize="hasAuthority('ADMIN')">Crea nuova pizza</a></h3>
 		
 		<h2 th:if="${pizze.size()==0}">
 			Non ci sono pizze salvate!
