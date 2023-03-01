@@ -32,8 +32,8 @@
 		      <th scope="col">Descrizione</th>
 		      <th scope="col">Url foto</th>
 		      <th scope="col">Prezzo</th>
-		      <th scope="col">MODIFICA</th>
-		      <th scope="col">ELIMINA</th>
+		      <th scope="col" sec:authorize="hasAuthority('ADMIN')">MODIFICA</th>
+		      <th scope="col" sec:authorize="hasAuthority('ADMIN')">ELIMINA</th>
 		    </tr>
 		  </thead>
 		  <tbody>
@@ -43,10 +43,10 @@
 		      <td th:text="${pizza.descrizione}"></td>
 		      <td th:text="${pizza.foto}"></td>
 		      <td th:text="${pizza.prezzo}"></td>
-		      <td>
+		      <td sec:authorize="hasAuthority('ADMIN')">
 		      	<a th:href="@{'/pizze/insert/' + ${pizza.id} }">Edit</a>
 		      </td>
-		      <td>
+		      <td sec:authorize="hasAuthority('ADMIN')">
 		      	<form action="#" th:action="@{'/pizze/delete/' + ${pizza.id} }" method="post">
 					<button class="btn btn-danger" type="submit" id="submitButton">
 						X

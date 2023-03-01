@@ -42,10 +42,10 @@
 			      		<div th:text="|Nome offerta: ${offerta.titolo}|"></div>
 			      		<div th:text="|Inizia: ${offerta.inizioOfferta}|"></div>
 			      		<div th:text="|Finisce: ${offerta.fineOfferta}|"></div>
-			      		<span>
+			      		<span sec:authorize="hasAuthority('ADMIN')">
 			      			<a th:href="@{'/offerte/edit/' + ${offerta.id} }">MODIFICA</a>
 			      		</span>
-			      		<form action="#" th:action="@{'/offerte/delete/' + ${offerta.id} }" method="post">
+			      		<form action="#" th:action="@{'/offerte/delete/' + ${offerta.id} }" method="post" sec:authorize="hasAuthority('ADMIN')">
 							<button class="btn btn-danger" type="submit" id="submitButton">
 								CANCELLA
 							</button>
@@ -67,10 +67,10 @@
 		</table>
 		
 		<div>
-			<a th:href="@{ '/offerte/create?pizzaId=' + ${pizza.id} }">Inserisci offerta</a>
+			<a th:href="@{ '/offerte/create?pizzaId=' + ${pizza.id} }" sec:authorize="hasAuthority('ADMIN')">Inserisci offerta</a>
 		</div>
 		
-		<form action="#" th:action="@{'/pizze/delete/' + ${pizza.id} }" method="post">
+		<form action="#" th:action="@{'/pizze/delete/' + ${pizza.id} }" method="post" sec:authorize="hasAuthority('ADMIN')">
 			<button class="btn btn-danger" type="submit" id="submitButton">
 				ELIMINA
 			</button>

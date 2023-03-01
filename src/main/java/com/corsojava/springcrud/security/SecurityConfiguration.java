@@ -15,9 +15,15 @@ public class SecurityConfiguration {
 	@Bean
 	SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
 		http.authorizeHttpRequests()
+				// CREA e MODIFICA only ADMIN
 			.requestMatchers("/pizze/insert", "/pizze/insert/**").hasAuthority("ADMIN")
+				// DELETE only ADMIN
 			.requestMatchers(HttpMethod.POST, "/pizze/**").hasAuthority("ADMIN")
+				// INGREDIENTI only ADMIN
 			.requestMatchers("/ingredienti", "/ingredienti/**").hasAuthority("ADMIN")
+				// OFFERTE only ADMIN
+			.requestMatchers("/offerte", "/offerte/**").hasAuthority("ADMIN")
+			
 			.requestMatchers("/pizze", "/pizze/**").hasAnyAuthority("USER", "ADMIN")
 			.requestMatchers("/**").permitAll()
 			.and().formLogin()

@@ -24,7 +24,10 @@
 			<a class="nav-link pe-5" th:href="@{/pizze}" th:classAppend="${page=='index'}? 'disabled bg-primary text-light' : 'border active'">Lista Pizze</a>
 		</li>
 		<li class="nav-item">
-			<a class="nav-link m-2" th:href="@{/ingredienti}" th:classAppend="${page=='ingredienti'}? 'disabled bg-primary text-light' : 'border active'">Lista Ingredienti</a>
+			<a class="nav-link m-2" sec:authorize="hasAuthority('ADMIN')" th:href="@{/ingredienti}" th:classAppend="${page=='ingredienti'}? 'disabled bg-primary text-light' : 'border active'">Lista Ingredienti</a>
+		</li>
+		<li class="nav-item">
+			<a class="nav-link m-2" th:href="@{/logout}" th:classAppend="'border active'">LOGOUT</a>
 		</li>
 	</ul>
 
